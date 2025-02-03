@@ -6,7 +6,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import tn.esprit.microservices.candidat.entities.Candidat;
+import tn.esprit.microservices.candidat.entities.Job;
 import tn.esprit.microservices.candidat.interfaces.CandidatRepository;
+import tn.esprit.microservices.candidat.interfaces.JobRepository;
 
 @SpringBootApplication
 public class CandidatApplication {
@@ -16,6 +18,8 @@ public class CandidatApplication {
     }
     @Autowired
     private CandidatRepository repository;
+    @Autowired
+    private JobRepository jobRepository;
 
     @Bean
     ApplicationRunner init() {
@@ -25,10 +29,14 @@ public class CandidatApplication {
             repository.save(new Candidat("Sarra", "ab", "sa@esprit.tn"));
             repository.save(new Candidat("Mohamed", "ba", "mo@esprit.tn"));
             repository.save(new Candidat("Maroua", "dh", "maroua@esprit.tn"));
-
+            jobRepository.save(new Job("service1",true));
+            jobRepository.save(new Job("service2",false));
             // fetch
             repository.findAll().forEach(System.out::println);
+            jobRepository.findAll().forEach(System.out::println);
 
         };
+
+
     }
 }
