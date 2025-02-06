@@ -4,12 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import tn.esprit.microservices.candidat.entities.Candidat;
 import tn.esprit.microservices.candidat.entities.Job;
 import tn.esprit.microservices.candidat.interfaces.CandidatRepository;
 import tn.esprit.microservices.candidat.interfaces.JobRepository;
-
+@EnableDiscoveryClient
 @SpringBootApplication
 public class CandidatApplication {
 
